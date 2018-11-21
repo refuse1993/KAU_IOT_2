@@ -22,8 +22,6 @@ int getMotionValue() {
   uint32_t cfgcon_trig; //trig
   uint32_t cfgcon_echo; //echo
 
-  printf("Distance Measure..\n");
-
   cfgcon_trig = GPIO_OUTPUT | GPIO_PORTG1 | GPIO_PIN4; //XGPIO12
   cfgcon_echo = GPIO_INPUT | GPIO_PORTG1 | GPIO_PIN2;  //XGPIO10
 
