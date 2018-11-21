@@ -15,9 +15,7 @@
 #define GPIO_PULLDOWN (0x1 << GPIO_PUPD_SHIFT)
 #define GPIO_PULLUP (0x3 << GPIO_PUPD_SHIFT)
 
-int getMotionValue() {
-  float distance;
-  long count;
+int getMotionValue(float* distance) {
 
   uint32_t cfgcon_trig; //trig
   uint32_t cfgcon_echo; //echo
@@ -29,7 +27,7 @@ int getMotionValue() {
   s5j_configgpio(cfgcon_echo);
 
 
-    count = 0;
+    long count = 0;
 
     s5j_gpiowrite(cfgcon_trig, 0); up_udelay(2);
     s5j_gpiowrite(cfgcon_trig, 1); up_udelay(10);
@@ -41,7 +39,6 @@ int getMotionValue() {
       up_udelay(1);
     }
 
-    distance = count / 29.0 / 2.0;
-    printf("Duration: %d us, Distance: %.2f cm\n", count, distance);
+    *distance = count / 29.0 / 2.0;
   return 0;
 }

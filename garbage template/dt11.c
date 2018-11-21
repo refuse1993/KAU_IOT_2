@@ -58,7 +58,6 @@ int getDtValue(int* container) {
     if (data[4] == (tmp & 0xFF)) {
       container[0] = data[0];
       container[1] = data[2];
-      printf("Temperature: %d, Humidity: %d\n", container[0], container[1]);
       return 1;
     } else {
       printf("Parity Error\n");

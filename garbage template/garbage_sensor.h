@@ -16,7 +16,7 @@
 #include <tinyara/config.h>
 
 
-int getDtValue(int* container);
+int getDtValue();
 int getMotionValue();
 
 #endif /* GARBAGE_SENSOR_H_ */

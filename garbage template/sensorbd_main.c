@@ -18,6 +18,7 @@
 
 
 #include "garbage_sensor.h"
+#include "wifi.h"
 
 #ifdef CONFIG_BUILD_KERNEL
 int main(int argc, FAR char *argv[])
@@ -27,11 +28,14 @@ int sensorbd_main(int argc, FAR char *argv[])
 {
 	int dt11Data[2];
 	int dt11Read;
+	float distance;
 
 	while(1){
 		dt11Read = getDtValue(dt11Data);
+		printf("Temperature: %d, Humidity: %d\n", dt11Data[0], dt11Data[1]);
 		up_mdelay(5000);
-		getMotionValue();
+		getMotionValue(&distance);
+		printf("Distance: %.2f cm\n", distance);
 		up_mdelay(5000);
 	}
 }
